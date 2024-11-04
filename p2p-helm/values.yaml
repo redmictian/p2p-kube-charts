@@ -1,0 +1,19 @@
+replicaCount: 3
+
+image:
+  repository: redmictian/p2p
+  tag: "1.0"
+
+container:
+  port: 3000
+  portName: http
+  livenessProbePath: p2p-app/liveness
+  livenessProbeDelay: 120
+  readinessProbePath: p2p-app/readiness
+  readinessProbeDelay: 120
+  command: "['./main']"
+
+service:
+  type: ClusterIP
+  port: 80
+  portName: http
