@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  # Name & location for this object
+  name: p2p
+  namespace: qa
+spec:
+  # Every app belongs to a project
+  project: default
+
+  source:
+    repoURL: https://github.com/redmictian/p2p-devops-test.git
+    # The last commit of the repo
+    targetRevision: HEAD
+    # Path in the repo to track
+    path: dev
+  
+  destination: 
+    # k8s API endpoint
+      # This here an internal service name for k8s api server
+    server: https://kubernetes.default.svc
+    namespace: myapp
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    # Pulls changes every 3 min
+    automated:
+      # Ovverride any manual changes by auto sync
+      selfHeal: true
+      # yaml is deleted or renamed results in the same outcome in k8s
+      prune: true
