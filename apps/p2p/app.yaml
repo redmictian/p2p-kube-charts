@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: p2p
-  namespace: qa
+  namespace: argocd
 spec:
   project: p2p
 
