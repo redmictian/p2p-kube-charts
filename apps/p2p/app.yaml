@@ -1,15 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: p2p
-  namespace: qa
+  name: p2p-qa
+  namespace: argocd
 spec:
-  project: p2p
+  project: qa-project
 
   source:
-    repoURL: https://github.com/redmictian/p2p-devops-test.git
-    targetRevision: HEAD
+    repoURL: https://github.com/redmictian/p2p-kube-charts.git
+    targetRevision: develop
     path: apps/p2p/chart
+    helm:
+      valueFiles:
+        - ../../../env/qa/p2p.yaml
   
   destination: 
     server: https://kubernetes.default.svc
