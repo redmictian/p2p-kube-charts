@@ -4,3 +4,11 @@ replicaCount: 3
 scalling:
   cpu: 80
   memory: 70
+
+resources:
+  limits:
+    cpu: 20m
+    memory: 20Mi
+  requests:
+    cpu: 1m
+    memory: 9Mi

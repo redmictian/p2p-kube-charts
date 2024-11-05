@@ -19,3 +19,5 @@ spec:
         - name: {{ .Values.container.portName }}
           containerPort: {{ .Values.container.port }}
           protocol: TCP
+        resources:
+{{ toYaml .Values.resources | indent 10 }}
