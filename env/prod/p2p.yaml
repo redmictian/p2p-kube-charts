@@ -1,2 +1,6 @@
 env: prod
 replicaCount: 3
+
+scalling:
+  cpu: 80
+  memory: 70
