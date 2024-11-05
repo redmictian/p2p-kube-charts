@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: p2p-prod
+  namespace: argocd
+spec:
+  project: prod-project
+
+  source:
+    repoURL: https://github.com/redmictian/p2p-kube-charts.git
+    targetRevision: master
+    path: apps/p2p/chart
+    helm:
+      valueFiles:
+        - ../../../env/prod/p2p.yaml
+  
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: prod
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      # Ovverride any manual changes by auto sync
+      selfHeal: true
+      # yaml is deleted or renamed results in the same outcome in k8s
+      prune: true
