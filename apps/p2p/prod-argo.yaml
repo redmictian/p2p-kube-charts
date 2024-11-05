@@ -8,7 +8,7 @@ spec:
 
   source:
     repoURL: https://github.com/redmictian/p2p-kube-charts.git
-    targetRevision: develop
+    targetRevision: master
     path: apps/p2p/chart
     helm:
       valueFiles:
