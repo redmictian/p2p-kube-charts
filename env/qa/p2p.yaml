@@ -1,2 +1,4 @@
 env: qa
 replicaCount: 1adding:tag
+image:
+  tag: 20241112-011142
